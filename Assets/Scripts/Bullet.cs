@@ -20,9 +20,11 @@ public class Bullet : MonoBehaviour
 
     void CheckCollisions(float moveDistance)
     {
+        //발사체의 위치와 발사체 정면방향으로 ray 정의
         Ray ray = new Ray(transform.position, transform.forward);
         RaycastHit hit;
 
+        //QueryTriggerInteraction : trigger와 충돌 할지 안할지 정하기
         if (Physics.Raycast(ray, out hit, moveDistance, collisionMask, QueryTriggerInteraction.Collide))
         {
             OnHitObject(hit);
