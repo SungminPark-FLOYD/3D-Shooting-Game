@@ -5,12 +5,13 @@ using UnityEngine.AI;
 using UnityEngine.UIElements;
 
 [RequireComponent(typeof(NavMeshAgent))]
-public class Enemy : MonoBehaviour
+public class Enemy : LivingEntity
 {
     NavMeshAgent pathfinder;
     Transform target;
-    void Start()
+    protected override void Start()
     {
+        base.Start();
         //플레이어 태그를 찾아 올수있게 설정
         pathfinder = GetComponent<NavMeshAgent>();
         target = GameObject.FindGameObjectWithTag("Player").transform;
@@ -33,7 +34,10 @@ public class Enemy : MonoBehaviour
         {
             //타겟 위치 가져오기
             Vector3 targetPosition = new Vector3(target.position.x, 0, target.position.z);
-            pathfinder.SetDestination(targetPosition);
+            if (!dead)
+            {
+                pathfinder.SetDestination(targetPosition);
+            }
             yield return new WaitForSeconds(refreshRate); //1초마다 루프 반복
         }
     }

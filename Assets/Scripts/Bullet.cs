@@ -6,6 +6,7 @@ public class Bullet : MonoBehaviour
 {
     public LayerMask collisionMask;
     float speed = 10;
+    float damage = 1;
     
     public void SetSpeed(float newSpeed)
     {
@@ -33,6 +34,11 @@ public class Bullet : MonoBehaviour
 
     void OnHitObject(RaycastHit hit)
     {
+        IDamageable damageableObject = hit.collider.GetComponent<IDamageable>();
+        if(damageableObject != null)
+        {
+            damageableObject.TakeHit(damage, hit);
+        }
         GameObject.Destroy(gameObject);
     }
 }
