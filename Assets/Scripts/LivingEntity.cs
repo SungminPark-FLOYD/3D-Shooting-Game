@@ -8,7 +8,7 @@ public class LivingEntity : MonoBehaviour, IDamageable
     protected float health;
     protected bool dead;
 
-    public event System.Action OnDeath;
+    public event System.Action OnDeath; //이벤트 시스템
 
     protected virtual void Start()
     {
