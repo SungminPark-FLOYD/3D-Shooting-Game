@@ -26,7 +26,7 @@ public class Spawner : MonoBehaviour
             nextSpawnTime = Time.time + currentWave.timeBetweenSpawns;
 
             Enemy spawnedEnemy = Instantiate(enemy, Vector3.zero, Quaternion.identity) as Enemy; //적 프리펩 인스턴스화
-            spawnedEnemy.OnDeath += OnEnemyDeath;
+            spawnedEnemy.OnDeath += OnEnemyDeath; //이벤트 시스템으로 적 죽음 알아내기
         }
     }
 
