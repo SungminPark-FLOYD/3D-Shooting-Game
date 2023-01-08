@@ -13,5 +13,6 @@ public class MapEditor : Editor
         MapGenerator map = target as MapGenerator;
 
         map.GenerateMap();
+        
     }
 }
